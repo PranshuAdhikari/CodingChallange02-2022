@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: CronJob
+metadata:
+  name: cron-daily
+spec:
+  schedule: "0 */24 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: kubectl
+            image: dockimage
+            imagePullPolicy: Never
+          restartPolicy: OnFailure
